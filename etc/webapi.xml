@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * http://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_POS
+ * @copyright  Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
+ * @license    http://www.landofcoder.com/LICENSE-1.0.html
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Lof Pos Configuration -->
+    <route url="/V1/pos/getSystemConfig" method="GET">
+        <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="getSystemConfig"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Lof Pos get token customer by email -->
+    <route url="/V1/pos/:customer_id/customer/token" method="GET">
+        <service class="Lof\Pos\Api\CustomerRepositoryInterface" method="getCustomerToken"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Lof Pos get list order history-->
+    <!-- Ex: http://127.0.0.1/rest/V1/pos/order_history/search?searchCriteria[sortOrders][0][field]=pos_order_id-->
+    <route url="/V1/pos/order_history/search" method="GET">
+        <service class="Lof\Pos\Api\OrderRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/pos/getShopInfo" method="GET">
+        <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="getShopInfo"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/pos/create-quote-checkout" method="POST">
+        <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="createQuoteCheckout"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/pos/apply-discount-code" method="POST">
+        <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="posApplyDiscountCode"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/pos/check-all-module-installed" method="GET">
+        <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="checkAllModuleInstalled"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

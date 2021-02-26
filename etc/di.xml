@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * http://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_POS
+ * @copyright  Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
+ * @license    http://www.landofcoder.com/LICENSE-1.0.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="\Lof\Pos\Api\ConfigRepositoryInterface" type="Lof\Pos\Model\ConfigRepository"/>
+    <preference for="\Lof\Pos\Api\CustomerRepositoryInterface" type="Lof\Pos\Model\CustomerManagement"/>
+    <preference for="\Lof\Pos\Api\Data\OrderInterface" type="Lof\Pos\Model\Order" />
+    <preference for="\Lof\Pos\Api\OrderRepositoryInterface" type="Lof\Pos\Model\OrderRepository" />
+    <preference for="Lof\Pos\Api\Data\OrderSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="pos_orders_listing_data_source" xsi:type="string">Lof\Pos\Model\ResourceModel\Order\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Lof\Pos\Model\ResourceModel\Order\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lof_pos_order</argument>
+            <argument name="resourceModel" xsi:type="string">Lof\Pos\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+</config>

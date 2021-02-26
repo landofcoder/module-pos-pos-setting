@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * http://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_POS
+ * @copyright  Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
+ * @license    http://www.landofcoder.com/LICENSE-1.0.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <section_lofpos>
+            <general_configuration>
+                <web_pos_color>default</web_pos_color>
+                <module_enabled>1</module_enabled>
+                <pos_title>POS</pos_title>
+                <enable_offline_mode>1</enable_offline_mode>
+                <choose_attribute_for_barcode>sku</choose_attribute_for_barcode>
+            </general_configuration>
+            <default_guest_checkout>
+                <customer_id>0</customer_id>
+            </default_guest_checkout>
+            <payment_for_pos>
+                <default_payment_method>cashondelivery</default_payment_method>
+            </payment_for_pos>
+            <shipping_method>
+                <default_shipping_method>pos_shipping_store_pickup</default_shipping_method>
+            </shipping_method>
+
+        </section_lofpos>
+
+        <carriers>
+            <pos_shipping_store_pickup>
+                <active>1</active>
+                <model>Lof\Pos\Model\Carrier\Shipping</model>
+                <name>Pos Shipping - Store Pickup</name>
+                <price>0</price>
+                <title>POS Shipping Method</title>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+            </pos_shipping_store_pickup>
+        </carriers>
+    </default>
+</config>

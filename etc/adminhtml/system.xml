@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * http://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_POS
+ * @copyright  Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
+ * @license    http://www.landofcoder.com/LICENSE-1.0.html
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="landofcoder" translate="label" sortOrder="10">
+            <label>landofcoder</label>
+        </tab>
+        <section id="section_lofpos" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>POS</label>
+            <tab>landofcoder</tab>
+            <resource>Lof_Pos::config_pos</resource>
+            <group id="general_configuration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>General Configuration</label>
+
+                <field id="module_enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+<!--                <field id="web_pos_logo" translate="label" type="image" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">-->
+<!--                    <label>Web POS logo</label>-->
+<!--                    <backend_model>Lof\Pos\Model\Config\Backend\CustomFileType</backend_model>-->
+<!--                    <base_url type="media" scope_info="1">pos_logo</base_url>-->
+<!--                    <comment><![CDATA[Upload your own logo here. Please note that recommended size is 250x50px & supported files are jpg, png.]]></comment>-->
+<!--                </field>-->
+
+                <field id="pos_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>POS Title</label>
+                </field>
+
+                <field id="enable_offline_mode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Enable Offline Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="choose_attribute_for_barcode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Choose Attribute For Barcode</label>
+                    <source_model>Lof\Pos\Model\Config\Source\AttributeForBarcode</source_model>
+                </field>
+
+                <field id="web_pos_color" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Web POS Color</label>
+                    <source_model>Lof\Pos\Model\Config\Source\WebPosColor</source_model>
+                    <comment><![CDATA[Choose 1 out of 5 options: default, blue, green, orange and red.]]></comment>
+                </field>
+            </group>
+
+            <group id="default_guest_checkout" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Default Guest Checkout</label>
+                <field id="customer_id" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Customer</label>
+                    <source_model>Lof\Pos\Model\Config\Source\Customer</source_model>
+                    <backend_model>Lof\Pos\Model\Config\Backend\Customer\DefaultCustomerValue</backend_model>
+                </field>
+            </group>
+
+            <group id="payment_for_pos" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Payment for POS</label>
+
+                <field id="applicable_payments" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Applicable Payments</label>
+                    <source_model>Lof\Pos\Model\Config\Source\PaymentsOption</source_model>
+                </field>
+
+                <field id="specific_payments" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Specific Payments</label>
+                    <source_model>Lof\Pos\Model\Config\Source\SpecificPaymentsOption</source_model>
+                    <depends>
+                        <field id="section_lofpos/payment_for_pos/applicable_payments">1</field>
+                    </depends>
+                </field>
+
+                <field id="default_payment_method" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Payment Method</label>
+                    <source_model>Lof\Pos\Model\Config\Source\DefaultPaymentMethod</source_model>
+                    <comment><![CDATA[the default mode is Cash On Delivery If you want to set Credit Card to be the default payment method for instance, you first have to choose it in Specific Payments field. Then, select option Web POS – Credit Card in Default Payment Method field.]]></comment>
+                </field>
+            </group>
+
+            <group id="shipping_method" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Shipping Method</label>
+
+                <field id="applicable_shipping_methods" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Applicable Shipping Methods</label>
+                    <source_model>Lof\Pos\Model\Config\Source\ApplicableShippingMethods</source_model>
+                </field>
+
+                <field id="specific_shipping_methods" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Specific Shipping Methods</label>
+                    <source_model>Lof\Pos\Model\Config\Source\SpecificShippingOption</source_model>
+                    <depends>
+                        <field id="section_lofpos/shipping_method/applicable_shipping_methods">1</field>
+                    </depends>
+                </field>
+
+                <field id="default_shipping_method" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Shipping Method</label>
+                    <source_model>Lof\Pos\Model\Config\Source\DefaultShippingMethod</source_model>
+                    <comment><![CDATA[You can choose one of two shipping methods supported to set as default payment method for POS If you want to set “Store Pickup” to be the default shipping method for instance, you first must choose it in Specific Shipping field. Then, select option “Store Pickup” in Default Shipping Method field.]]></comment>
+                </field>
+
+                <field id="mark_as_shipped_by_default" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable “Mark as shipped” by default</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Choose “Yes” if you want to mark items as shipped]]></comment>
+                </field>
+            </group>
+
+            <group id="stripe_settings" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Stripe settings</label>
+
+                <field id="api_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Api key</label>
+                </field>
+            </group>
+            <group id="authorize_settings" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Authorize settings</label>
+
+                <field id="Login_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LoginId</label>
+                </field>
+                <field id="transaction_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Transaction key</label>
+                </field>
+            </group>
+
+        </section>
+
+        <section id="carriers" translate="label" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="pos_shipping_store_pickup" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>POS Shipping - Store Pickup</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Method Name</label>
+                </field>
+                <field id="price" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Price</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title</label>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="92" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show Method if Not Applicable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                </field>
+                <field id="specificerrmsg" translate="label" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Displayed Error Message</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

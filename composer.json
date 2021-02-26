@@ -1,0 +1,26 @@
+{
+    "name": "landofcoder/module-pos",
+    "description": "",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Landofcoder",
+            "email": "landofcoder@gmail.com",
+            "homepage": "https://landofcoder.com"
+        }
+    ],
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "require": {
+        "landofcoder/module-all" : "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lof\\Pos\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
