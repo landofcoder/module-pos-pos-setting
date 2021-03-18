@@ -25,7 +25,7 @@
     <route url="/V1/pos/getSystemConfig" method="GET">
         <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="getSystemConfig"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Lof_Pos::config_pos"/>
         </resources>
     </route>
     <!-- Lof Pos get token customer by email -->
@@ -40,31 +40,31 @@
     <route url="/V1/pos/order_history/search" method="GET">
         <service class="Lof\Pos\Api\OrderRepositoryInterface" method="getList"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Lof_Pos::orders"/>
         </resources>
     </route>
     <route url="/V1/pos/getShopInfo" method="GET">
         <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="getShopInfo"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Lof_Pos::shop_info"/>
         </resources>
     </route>
     <route url="/V1/pos/create-quote-checkout" method="POST">
         <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="createQuoteCheckout"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Lof_Pos::create_quote"/>
         </resources>
     </route>
     <route url="/V1/pos/apply-discount-code" method="POST">
         <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="posApplyDiscountCode"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Lof_Pos::apply_discount"/>
         </resources>
     </route>
     <route url="/V1/pos/check-all-module-installed" method="GET">
         <service class="Lof\Pos\Api\ConfigRepositoryInterface" method="checkAllModuleInstalled"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Lof_Pos::check_module"/>
         </resources>
     </route>
 </routes>

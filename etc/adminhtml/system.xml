@@ -127,7 +127,6 @@
                     <comment><![CDATA[Choose “Yes” if you want to mark items as shipped]]></comment>
                 </field>
             </group>
-
             <group id="stripe_settings" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>Stripe settings</label>
 

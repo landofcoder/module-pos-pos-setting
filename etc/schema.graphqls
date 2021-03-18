@@ -1,0 +1,22 @@
+type StoreConfig {
+    pos: PosConfiguration @resolver(class: "\\Lof\\Pos\\Model\\Resolver\\PosConfiguration")
+}
+
+type PosConfiguration {
+    enabled: Boolean
+    pos_title: String
+    enable_offline_mode: Boolean
+    choose_attribute_for_barcode: String
+    web_pos_color: String
+    default_guest_checkout: String
+    applicable_payments: String
+    specific_payments: String
+    default_payment_method: String
+    applicable_shipping_methods: String
+    specific_shipping_methods: String
+    default_shipping_method: String
+    mark_as_shipped_by_default: Boolean
+    stripe_api_key: String
+    authorize_login_id: String
+    authorize_transaction_key: String
+}

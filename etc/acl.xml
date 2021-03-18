@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Lof_Pos::pos" sortOrder="10" title="Lof Pos">
+                    <resource id="Lof_Pos::orders" sortOrder="10" title="View Orders"/>
+                    <resource id="Lof_Pos::shop_info" sortOrder="10" title="View Shop Info"/>
+                    <resource id="Lof_Pos::create_quote" sortOrder="10" title="Create Quote"/>
+                    <resource id="Lof_Pos::apply_discount" sortOrder="10" title="Apply Discount"/>
+                    <resource id="Lof_Pos::check_module" sortOrder="10" title="Check All Modules Installed"/>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Lof_Pos::config_pos" title="POS Settings">
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
